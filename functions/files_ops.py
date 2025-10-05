@@ -20,5 +20,16 @@ def add_task(title):
         "done":False,
         "date":date.today.isoformat()
     }) 
-    save_tasks(tasks):
+    save_tasks(tasks)
     print(f"کار{title}اضافه شد")   
+
+def show_tasks():
+    tasks=load_tasks
+    if not tasks:
+        print('هیچ کاری موجود نیست')
+        return
+    print('\n =======لیست کار ها=======') 
+    for i ,t in enumerate(tasks,start=1):
+        status='done' if t.get('done') else 'not done'
+        date=t.get('date','')
+        print(f'{i}.{t.get("task")} [{status}] ({date})')
